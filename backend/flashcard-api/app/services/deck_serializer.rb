@@ -6,7 +6,7 @@ class DeckSerializer
 
     def to_serialized_json
         options = {
-            include: [:name, :language]
+            only: [:name, :language]
         }
 
         @deck_object.to_json(options)
