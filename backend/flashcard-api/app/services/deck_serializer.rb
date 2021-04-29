@@ -1,0 +1,2 @@
+class DeckSerializer
+end
