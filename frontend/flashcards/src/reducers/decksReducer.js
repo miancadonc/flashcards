@@ -13,6 +13,7 @@ const decksReducer = (state = {
         case "ADD_DECKS":
             return {
                 ...state,
+                decks: action.decks,
                 loading: false
             }
 
