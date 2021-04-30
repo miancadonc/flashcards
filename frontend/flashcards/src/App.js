@@ -4,6 +4,8 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import {fetchDecks} from './actions/deckActions'
+import Deck from "./components/Deck";
+import Flashcard from "./components/Flashcard";
 
 // function App() {
 //   return (
@@ -34,10 +36,18 @@ class App extends Component {
   
   }
 
+  handleLoading = () => {
+    if(this.props.loading === false && !!this.props.decks[0]){
+      return(<Flashcard flashcard={this.props.decks[0].cards[0]} />)
+    }
+  }
+
   render(){
     return(
       <div>
         <h1>I'm working!</h1>
+        {this.handleLoading()}
+        {/* <Deck deck={this.props.decks[0]}/> */}
       </div>
     )
   }
