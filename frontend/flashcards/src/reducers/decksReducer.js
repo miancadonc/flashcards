@@ -10,12 +10,12 @@ const decksReducer = (state = {
                 loading: true
             }
 
-        case "ADD_CATS":
+        case "ADD_DECKS":
             return {
                 ...state,
                 loading: false
             }
-            
+
         default:
             return state
     }
