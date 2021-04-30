@@ -7,3 +7,5 @@ const decksReducer = (state = {
             return state
     }
 }
+
+export default decksReducer
