@@ -2,6 +2,8 @@
 // import './App.css';
 
 import { Component } from "react";
+import { connect } from "react-redux";
+import {fetchDecks} from './actions/deckActions'
 
 // function App() {
 //   return (
@@ -25,6 +27,13 @@ import { Component } from "react";
 // }
 
 class App extends Component {
+
+  componentDidMount(){
+    
+    this.props.fetchDecks()
+  
+  }
+
   render(){
     return(
       <div>
@@ -34,4 +43,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  decks: state.decks,
+  loading: state.loading
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchDecks: () => dispatch(fetchDecks())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
