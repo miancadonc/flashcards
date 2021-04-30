@@ -38,7 +38,13 @@ class App extends Component {
 
   handleLoading = () => {
     if(this.props.loading === false && !!this.props.decks[0]){
-      return(<Flashcard flashcard={this.props.decks[0].cards[0]} />)
+      return(
+      <div>
+        <Deck deck={this.props.decks[0]}/>
+        <Flashcard flashcard={this.props.decks[0].cards[0]} />
+      </div>
+      
+      )
     }
   }
 
@@ -47,7 +53,6 @@ class App extends Component {
       <div>
         <h1>I'm working!</h1>
         {this.handleLoading()}
-        {/* <Deck deck={this.props.decks[0]}/> */}
       </div>
     )
   }
