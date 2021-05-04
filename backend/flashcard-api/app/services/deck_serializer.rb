@@ -7,7 +7,9 @@ class DeckSerializer
     def to_serialized_json
         options = {
             only: [:name, :language],
-            include: :cards
+            include: {cards: {
+                except: [:created_at, :updated_at]
+            }}
         }
 
         @deck_object.to_json(options)

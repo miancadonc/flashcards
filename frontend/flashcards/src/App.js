@@ -7,6 +7,9 @@ import {fetchDecks} from './actions/deckActions'
 import Deck from "./components/Deck";
 import Flashcard from "./components/Flashcard";
 
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import NavBar from './components/NavBar'
+
 // function App() {
 //   return (
 //     <div className="App">
