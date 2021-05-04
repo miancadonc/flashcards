@@ -53,10 +53,12 @@ class App extends Component {
 
   render(){
     return(
-      <div>
-        <h1>I'm working!</h1>
-        {this.handleLoading()}
-      </div>
+      <Router>
+        <div>
+        <NavBar/>
+        <Route exact path="/" render={() => <div>{this.handleLoading()}</div>} />
+        </div>
+      </Router>
     )
   }
 }
