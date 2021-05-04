@@ -16,6 +16,12 @@ const NavBar = () => {
         >
           New Deck
         </NavLink>
+        <NavLink 
+          style={{ marginRight: '10px' }} 
+          to="cards/new"
+        >
+          New Card
+        </NavLink>
       </div>
     );
 }
