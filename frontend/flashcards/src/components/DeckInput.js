@@ -16,8 +16,8 @@ class DeckInput extends Component {
         event.preventDefault()
         this.props.addDeck({deckName: this.state.deckName, deckLanguage: this.state.deckLanguage})
         this.setState({
-          deckName: '',
-          dedckLanguage: ''
+          deckName: "",
+          deckLanguage: ""
         })
     }
     
