@@ -13,7 +13,7 @@ export const fetchDecks = () => {
     }
 }
 
-export const addDeck = (props) => {
+export const addDeck = (deck) => {
     return (dispatch) => {
         dispatch({type: "LOADING_DECKS"})
 
@@ -23,7 +23,7 @@ export const addDeck = (props) => {
                 "Content-Type" : "application/json",
                 "Accept" : "application/json"
             },
-            body: JSON.stringify(props)
+            body: JSON.stringify(deck)
         }
 
         fetch('http://localhost:3000/decks', configObject)
