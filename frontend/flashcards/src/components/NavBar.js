@@ -12,13 +12,13 @@ const NavBar = () => {
         </NavLink>
         <NavLink 
           style={{ marginRight: '10px' }} 
-          to="decks/new"
+          to="/decks/new"
         >
           New Deck
         </NavLink>
         <NavLink 
           style={{ marginRight: '10px' }} 
-          to="cards/new"
+          to="/cards/new"
         >
           New Card
         </NavLink>
