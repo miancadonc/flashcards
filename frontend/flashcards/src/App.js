@@ -47,7 +47,8 @@ class App extends Component {
       <div>
         {/* <Deck deck={this.props.decks[0]}/>
         <Flashcard flashcard={this.props.decks[0].cards[0]} /> */}
-        <DeckInput addDeck={this.props.addDeck} />
+        <DecksPage decks={this.props.decks} />
+        
       </div>
       
       )
@@ -60,7 +61,8 @@ class App extends Component {
         <div>
         <NavBar/>
         <Route exact path="/" render={() => <div>{this.handleLoading()}</div>} />
-        {/* <Route path="/decks" render={routerProps => <div><DecksPage {...routerProps} /></div>} /> */}
+        <Route path="/decks" render={() => <div>{this.handleLoading()}</div>} />
+        <Route path="/decks/new" render={() => <DeckInput addDeck={this.props.addDeck} />} />
         </div>
       </Router>
     )
