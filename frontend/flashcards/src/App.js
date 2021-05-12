@@ -3,12 +3,14 @@
 
 import { Component } from "react";
 import { connect } from "react-redux";
-import {fetchDecks} from './actions/deckActions'
+import {fetchDecks, addDeck} from './actions/deckActions'
 import Deck from "./components/Deck";
 import Flashcard from "./components/Flashcard";
 
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import NavBar from './components/NavBar'
+import DecksPage from './containers/DecksPage'
+import DeckInput from './components/DeckInput'
 
 // function App() {
 //   return (
@@ -43,8 +45,9 @@ class App extends Component {
     if(this.props.loading === false && !!this.props.decks[0]){
       return(
       <div>
-        <Deck deck={this.props.decks[0]}/>
-        <Flashcard flashcard={this.props.decks[0].cards[0]} />
+        {/* <Deck deck={this.props.decks[0]}/>
+        <Flashcard flashcard={this.props.decks[0].cards[0]} /> */}
+        <DeckInput addDeck={this.props.addDeck} />
       </div>
       
       )
@@ -57,6 +60,7 @@ class App extends Component {
         <div>
         <NavBar/>
         <Route exact path="/" render={() => <div>{this.handleLoading()}</div>} />
+        {/* <Route path="/decks" render={routerProps => <div><DecksPage {...routerProps} /></div>} /> */}
         </div>
       </Router>
     )
@@ -69,7 +73,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchDecks: () => dispatch(fetchDecks())
+  fetchDecks: () => dispatch(fetchDecks()),
+  addDeck: (deck) => dispatch(addDeck(deck))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
