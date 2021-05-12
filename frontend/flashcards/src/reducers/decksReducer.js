@@ -20,7 +20,8 @@ const decksReducer = (state = {
         case "ADD_DECK":
             return {
                 ...state,
-                decks: state.decks.concat({name: action.deck.name, language: action.deck.language})
+                decks: state.decks.concat({name: action.deck.name, language: action.deck.language}),
+                loading: false
             }
 
         default:
