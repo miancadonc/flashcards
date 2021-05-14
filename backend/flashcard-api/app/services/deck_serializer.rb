@@ -6,7 +6,7 @@ class DeckSerializer
 
     def to_serialized_json
         options = {
-            only: [:name, :language],
+            only: [:name, :language, :id],
             include: {cards: {
                 except: [:created_at, :updated_at]
             }}
