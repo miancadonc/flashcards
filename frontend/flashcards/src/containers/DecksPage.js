@@ -1,6 +1,7 @@
 import React from 'react'
 import { Component } from 'react'
 import { CardDeck } from 'react-bootstrap'
+import { connect } from 'react-redux'
 import Deck from '../components/Deck'
 
 class DecksPage extends Component {
@@ -18,6 +19,19 @@ class DecksPage extends Component {
         <Deck key={deck.id} deck={deck}/>
     )
 
+    handleLoading = (searchResults) => {
+        if(this.props.loading === false && !!this.props.decks[0]){
+          return(
+          <div>
+                <CardDeck>
+                    {this.renderDecks(searchResults)}
+                </CardDeck>
+          </div>
+          
+          )
+        }
+      }
+
     render(){
         const searchResults = this.props.decks.filter(deck => deck.name.includes(this.state.searchInput))
         return(
@@ -28,12 +42,15 @@ class DecksPage extends Component {
                 placeholder="search"
                 onChange={(e) => this.handleOnChange(e)}
                 />
-                <CardDeck>
-                    {this.renderDecks(searchResults)}
-                </CardDeck>
+                {this.handleLoading(searchResults)}
             </div>
         )
     }
 }
 
-export default DecksPage
+const mapStateToProps = state => ({
+    decks: state.decks,
+    loading: state.loading
+})
+
+export default connect(mapStateToProps)(DecksPage)

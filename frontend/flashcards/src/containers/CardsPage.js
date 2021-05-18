@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardDeck } from 'react-bootstrap'
+import { connect } from 'react-redux'
 import Flashcard from '../components/Flashcard'
 
 const CardsPage = props => {
@@ -19,4 +20,9 @@ const CardsPage = props => {
     )
 }
 
-export default CardsPage
+const mapStateToProps = state => ({
+    decks: state.decks,
+    loading: state.loading
+})
+
+export default connect(mapStateToProps)(CardsPage)

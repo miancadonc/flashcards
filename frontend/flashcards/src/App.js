@@ -43,28 +43,16 @@ class App extends Component {
   
   }
 
-  handleLoading = () => {
-    if(this.props.loading === false && !!this.props.decks[0]){
-      return(
-      <div>
-        {/* <Flashcard flashcard={this.props.decks[0].cards[0]} /> */}
-        <DecksPage decks={this.props.decks} />
-        
-      </div>
-      
-      )
-    }
-  }
 
   render(){
     return(
       <Router>
         <div>
         <NavBar/>
-        <Route exact path="/" render={() => <div>{this.handleLoading()}</div>} />
-        <Route exact path="/decks" render={() => <div>{this.handleLoading()}</div>} />
+        <Route exact path="/" render={() => <div><DecksPage /></div>} />
+        <Route exact path="/decks" render={() => <div><DecksPage /></div>} />
         <Route path="/decks/new" render={() => <DeckInput addDeck={this.props.addDeck} />} />
-        <Route path="/decks/:id/cards" render={(routerProps) => <CardsPage {...routerProps} decks={this.props.decks} />} />
+        <Route path="/decks/:id/cards" render={(routerProps) => <CardsPage {...routerProps} />} />
         {/* <Route path="/decks/:id/cards" component={<CardsPage decks={this.props.decks} />} /> */}
         <Route path="/decks/:id/cards/new" render={(routerProps) => <CardInput {...routerProps} addCard={this.props.addCard} />} />
         {/* <Route path="/cards/new" render={() => <CardInput addCard={this.props.addCard} />} /> */}
@@ -74,17 +62,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  decks: state.decks,
-  loading: state.loading
-})
-
 const mapDispatchToProps = dispatch => ({
   fetchDecks: () => dispatch(fetchDecks()),
   addDeck: (deck) => dispatch(addDeck(deck)),
   addCard: (card) => dispatch(addCard(card))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)
 
 

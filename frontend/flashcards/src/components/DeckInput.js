@@ -14,7 +14,9 @@ class DeckInput extends Component {
     
     handleOnSubmit(event) {
         event.preventDefault()
+        console.log('a')
         this.props.addDeck({deckName: this.state.deckName, deckLanguage: this.state.deckLanguage})
+        console.log('g')
         this.setState({
           deckName: "",
           deckLanguage: ""
