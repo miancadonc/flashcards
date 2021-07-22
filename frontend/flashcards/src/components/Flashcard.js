@@ -8,6 +8,7 @@ const Flashcard = props =>
                 <Accordion.Toggle as={Button} eventKey="0">
                     {props.flashcard.front}
                 </Accordion.Toggle>
+                <Button style={{float: 'right'}}>X</Button>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
                 <Card.Body>
