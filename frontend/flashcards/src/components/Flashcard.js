@@ -8,7 +8,7 @@ const Flashcard = props =>
                 <Accordion.Toggle as={Button} eventKey="0">
                     {props.flashcard.front}
                 </Accordion.Toggle>
-                <Button style={{float: 'right'}}>X</Button>
+                <Button style={{float: 'right'}} onClick={() => {props.removeCard(props.flashcard)}}>X</Button>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
                 <Card.Body>
@@ -21,3 +21,5 @@ const Flashcard = props =>
     </Accordion>
 
 export default Flashcard
+
+// onClick={props.removeCard(props.flashcard)}

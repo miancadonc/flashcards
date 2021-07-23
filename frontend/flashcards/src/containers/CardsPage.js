@@ -2,6 +2,7 @@ import React from 'react'
 import { CardDeck } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Flashcard from '../components/Flashcard'
+import { removeCard } from '../actions/deckActions'
 
 const CardsPage = props => {
     
@@ -9,9 +10,10 @@ const CardsPage = props => {
     const deck = props.decks.find((deck) => deck.id == id)
 
     const renderCards = deck.cards.map(card =>
-        <Flashcard flashcard={card}/>
+        <Flashcard flashcard={card} removeCard={props.removeCard} />
     )
 
+    // removeCard={props.removeCard} 
     return(
         <CardDeck>
             {renderCards}
@@ -25,4 +27,8 @@ const mapStateToProps = state => ({
     loading: state.loading
 })
 
-export default connect(mapStateToProps)(CardsPage)
+const mapDispatchToProps = dispatch => ({
+    removeCard: (card) => dispatch(removeCard(card))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardsPage)
