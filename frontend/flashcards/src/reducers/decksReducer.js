@@ -31,6 +31,13 @@ const decksReducer = (state = {
                 loading: false
             }
 
+        case "REMOVE_CARD":
+            return {
+                ...state,
+                decks: Object.assign([], [...state.decks.filter(deck => deck.id !== action.deck.id)]).concat({name: action.deck.name, language: action.deck.language, id: action.deck.id, cards: action.deck.cards}),
+                loading: false
+            }
+
         default:
             return state
     }
