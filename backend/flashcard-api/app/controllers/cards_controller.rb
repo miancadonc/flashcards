@@ -11,4 +11,11 @@ class CardsController < ApplicationController
         render json: DeckSerializer.new(deck).to_serialized_json
     end
 
+    def destroy
+        card = Card.find(params[:id])
+        deck = Deck.find(card.deck_id)
+        card.destroy
+        render json: DeckSerializer.new(deck).to_serialized_json
+    end
+
 end
