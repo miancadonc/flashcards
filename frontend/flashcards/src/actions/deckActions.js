@@ -65,3 +65,27 @@ export const addCard = (card) => {
         })
     }
 }
+
+export const removeCard = (card) => {
+    return (dispatch) => {
+        dispatch({type: "LOADING"})
+
+        let configObject = {
+            method: "DELETE",
+            headers: {
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
+            },
+            body: JSON.stringify(card)
+        }
+
+        fetch(`http://localhost:3000/cards/${card.id}`, configObject)
+        .then(resp => resp.json())
+        .then(json => {
+            dispatch({
+                type: "REMOVE_CARD",
+                deck: json
+            })
+        })
+    }
+}
